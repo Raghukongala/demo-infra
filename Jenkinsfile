@@ -42,6 +42,21 @@ pipeline {
             }
         }
 
+        stage('Create DynamoDB Lock Table') {
+            steps {
+                sh '''
+                    aws dynamodb describe-table --table-name $DYNAMODB_TABLE --region $AWS_REGION 2>/dev/null || \
+                    aws dynamodb create-table \
+                        --table-name $DYNAMODB_TABLE \
+                        --attribute-definitions AttributeName=LockID,AttributeType=S \
+                        --key-schema AttributeName=LockID,KeyType=HASH \
+                        --billing-mode PAY_PER_REQUEST \
+                        --region $AWS_REGION && \
+                    aws dynamodb wait table-exists --table-name $DYNAMODB_TABLE --region $AWS_REGION
+                '''
+            }
+        }
+
         stage('Terraform Init') {
             steps {
                 dir("${TF_DIR}") {
