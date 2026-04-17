@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION      = 'ap-south-1'
         TF_DIR          = '.'
-        S3_BUCKET       = 'raghuterraform'
+        S3_BUCKET       = 'pydahbucket'
         DYNAMODB_TABLE  = 'raghuterraform-lock'
     }
 

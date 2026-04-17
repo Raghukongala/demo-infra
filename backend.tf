@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "raghuterraform"
+    bucket         = "pydahbucket"
     key            = "eks/task-management/terraform.tfstate"
     region         = "ap-south-1"
     dynamodb_table = "raghuterraform-lock"
