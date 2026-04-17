@@ -12,7 +12,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/Raghukongala/demo-infra.git'
             }
         }
 
