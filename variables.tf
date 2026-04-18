@@ -23,5 +23,5 @@ variable "node_min" {
 }
 
 variable "node_max" {
-  default = 3
+  default = 5
 }

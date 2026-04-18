@@ -13,3 +13,7 @@ output "ecr_urls" {
 output "vpc_id" {
   value = aws_vpc.main.id
 }
+
+output "oidc_provider_arn" {
+  value = aws_iam_openid_connect_provider.eks.arn
+}
